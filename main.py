@@ -3,7 +3,7 @@ import random
 import time
 import threading
 
-# ── colour palette ──────────────────────────────────────────────────────────
+#colour palette ──────────────────────────────────────────────────────────
 BG        = "#0d0d0d"
 BAR_DEF   = "#1e90ff"   # default
 BAR_LEFT  = "#ff4d4d"   # left-half element being merged
@@ -18,7 +18,7 @@ FONT_TITLE = ("Courier New", 20, "bold")
 FONT_CODE  = ("Courier New", 11)
 FONT_STAT  = ("Courier New", 12, "bold")
 
-# ── mergesort source displayed in the sidebar ────────────────────────────────
+#mergesort source displayed in the sidebar ────────────────────────────────
 CODE_LINES = [
     "def merge_sort(arr, lo, hi):",
     "    if lo >= hi:",
@@ -89,7 +89,7 @@ class MergeSortVisualizer:
         self._build_ui()
         self._new_array()
 
-    # ── UI ───────────────────────────────────────────────────────────────────
+    #UI ───────────────────────────────────────────────────────────────────
     def _build_ui(self):
         self.root.columnconfigure(0, weight=3)
         self.root.columnconfigure(1, weight=1)
@@ -211,7 +211,7 @@ class MergeSortVisualizer:
                      font=("Courier New", 9), fg=color, bg=BG
                      ).pack(side="left", padx=5)
 
-    # ── array helpers ────────────────────────────────────────────────────────
+    #array helpers ────────────────────────────────────────────────────────
     def _new_array(self):
         if self.running:
             return
@@ -246,7 +246,7 @@ class MergeSortVisualizer:
                     text=str(val), fill=TXT,
                     font=("Courier New", max(7, int(bw * 0.5))))
 
-    # ── stats / highlight ────────────────────────────────────────────────────
+    #stats / highlight ────────────────────────────────────────────────────
     def _update_stats(self, elapsed: float):
         self.lbl_n.config(  text=f"Elements    : {self.n}")
         self.lbl_cmp.config(text=f"Comparisons : {self.comparisons}")
@@ -263,7 +263,7 @@ class MergeSortVisualizer:
             else:
                 lbl.config(bg=BG, fg="#666" if CODE_LINES[i] == "" else TXT)
 
-    # ── controls ─────────────────────────────────────────────────────────────
+    #controls ─────────────────────────────────────────────────────────────
     def _start(self):
         if self.running:
             return
@@ -282,7 +282,7 @@ class MergeSortVisualizer:
     def _stop_sort(self):
         self._stop = True
 
-    # ── sort thread ──────────────────────────────────────────────────────────
+    #sort thread ──────────────────────────────────────────────────────────
     def _sort_thread(self):
         t0 = time.time()
         n  = len(self.arr)
@@ -421,7 +421,7 @@ class MergeSortVisualizer:
                 self.colors[idx] = BAR_DEF
         self._refresh()
 
-    # ── helpers ──────────────────────────────────────────────────────────────
+    #helpers ──────────────────────────────────────────────────────────────
     def _hl(self, line: int):
         self.root.after(0, lambda l=line: self._highlight_code(l))
 
