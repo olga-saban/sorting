@@ -4,7 +4,7 @@ import random
 import time
 import threading
 
-# ── colour palette ──────────────────────────────────────────────────────────
+#colour palette ──────────────────────────────────────────────────────────
 BG        = "#0d0d0d"
 BAR_DEF   = "#1e90ff"   # default bar
 BAR_PIV   = "#ff4d4d"   # pivot
@@ -18,7 +18,7 @@ FONT_TITLE = ("Courier New", 20, "bold")
 FONT_CODE  = ("Courier New", 11)
 FONT_STAT  = ("Courier New", 12, "bold")
 
-# ── quicksort source (shown in the sidebar) ─────────────────────────────────
+#quicksort source (shown in the sidebar) ─────────────────────────────────
 CODE_LINES = [
     "def quicksort(arr, lo, hi):",
     "    if lo < hi:",
@@ -37,7 +37,7 @@ CODE_LINES = [
     "    return i + 1",
 ]
 
-# line → index mapping used to highlight the code
+#line for index mapping used to highlight the code
 LINE = {
     "fn_qs"        : 0,
     "if_lo_hi"     : 1,
@@ -77,7 +77,7 @@ class QuickSortVisualizer:
         self._build_ui()
         self._new_array()
 
-    # ── UI construction ──────────────────────────────────────────────────────
+    #UI construction ──────────────────────────────────────────────────────
     def _build_ui(self):
         self.root.columnconfigure(0, weight=3)
         self.root.columnconfigure(1, weight=1)
@@ -201,7 +201,7 @@ class QuickSortVisualizer:
                            font=("Courier New", 9), fg=color, bg=BG)
             dot.pack(side="left", padx=6)
 
-    # ── array helpers ────────────────────────────────────────────────────────
+    #array helpers ────────────────────────────────────────────────────────
     def _new_array(self):
         if self.running:
             return
@@ -239,7 +239,7 @@ class QuickSortVisualizer:
                     text=str(val), fill=TXT,
                     font=("Courier New", max(7, int(bw * 0.5))))
 
-    # ── stats / code highlight ───────────────────────────────────────────────
+    #stats / code highlight ───────────────────────────────────────────────
     def _update_stats(self, elapsed: float):
         self.lbl_n.config(   text=f"Elements     : {self.n}")
         self.lbl_cmp.config( text=f"Comparisons  : {self.comparisons}")
@@ -257,7 +257,7 @@ class QuickSortVisualizer:
                 raw = CODE_LINES[i]
                 lbl.config(bg=BG, fg="#666" if raw == "" else TXT)
 
-    # ── sorting thread ───────────────────────────────────────────────────────
+    #sorting thread ───────────────────────────────────────────────────────
     def _start(self):
         if self.running:
             return
@@ -385,7 +385,7 @@ class QuickSortVisualizer:
         self.btn_stop.config( state="disabled")
         self.btn_reset.config(state="normal")
 
-    # ── slider callbacks ─────────────────────────────────────────────────────
+    #slider callbacks ─────────────────────────────────────────────────────
     def _on_size(self, val):
         if self.running:
             return
